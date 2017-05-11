@@ -1,0 +1,14 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>YAGA - Map</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <yaga-map [(lat)]="mapCenterLat" [(lng)]="mapCenterLng" [(zoom)]="mapZoom">
+        <yaga-tile-layer *ngFor="layer in layerTreeService.tileLayers" [(display)]="layer.enabled" [url]="layer.url" [attribution]="layer.attribution"></yaga-tile-layer>
+    </yaga-map>
+</ion-content>

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@yaga/leaflet-ng2": "^1.0.0"
+  }
+}
