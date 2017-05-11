@@ -43,5 +43,5 @@
     "cordova-plugin-device",
     "cordova-plugin-console"
   ],
-  "cordovaPlatforms": [],
+  "cordovaPlatforms": []
 }
