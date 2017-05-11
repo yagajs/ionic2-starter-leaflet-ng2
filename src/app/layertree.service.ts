@@ -4,7 +4,7 @@ import { OSM_TILE_LAYER_URL } from '@yaga/leafelt-ng2';
 export interface ITileLayerInfo {
     url: string;
     attribution: string;
-    enable?: boolean;
+    enabled?: boolean;
 }
 
 @Injectable()
@@ -12,7 +12,7 @@ export class LayertreeService {
     public tileLayers: ITileLayerInfo[] = [
         {
             attribution: '© <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            enable: true,
+            enabled: true,
             url: OSM_TILE_LAYER_URL,
         },
     ];
