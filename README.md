@@ -19,7 +19,7 @@ Make sure to add `sudo` on Mac and Linux. If you encounter issues installing the
 To create a new Ionic project using this AWS Mobile Hub starter, run
 
 ```bash
-ionic start myApp git@github.com:yagajs/ionic2-starter.git
+ionic start myApp https://github.com/yagajs/ionic2-starter-leaflet-ng2
 ```
 
 Which will create a new app in `./myApp`.
