@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { MapPage } from '../pages/map/map';
+import { LayertreePage } from '../pages/layertree/layertree';
 
 @Component({
     templateUrl: 'app.html'
@@ -21,6 +22,7 @@ export class YagaApp {
         // used for an example of ngFor and navigation
         this.pages = [
             { title: 'Map', component: MapPage },
+            { title: 'Layertree', component: LayertreePage },
         ];
 
     }

@@ -9,6 +9,20 @@
 
 <ion-content>
     <yaga-map [(lat)]="mapCenterLat" [(lng)]="mapCenterLng" [(zoom)]="mapZoom">
-        <yaga-tile-layer *ngFor="layer in layerTreeService.tileLayers" [(display)]="layer.enabled" [url]="layer.url" [attribution]="layer.attribution"></yaga-tile-layer>
+
+        <yaga-tile-layer *ngFor="let layer of tileLayers" [(display)]="layer.enabled" [url]="layer.url" [attribution]="layer.attribution"></yaga-tile-layer>
+
+        <yaga-circle-marker *ngFor="let country of geoData" [lat]="country.latlng[0]" [lng]="country.latlng[1]" [radius]="calculateRadius(country.area)" [color]="calculateColor(country.area)">
+            <yaga-tooltip><b>{{ country.name.common }}</b></yaga-tooltip>
+            <yaga-popup>
+                <b>{{ country.name.official }}</b><br/>
+                <b>Area:</b> {{ country.area }}
+            </yaga-popup>
+        </yaga-circle-marker>
+
+        <!-- Controls -->
+        <yaga-attribution-control></yaga-attribution-control>
+        <yaga-scale-control [metric]="true" [imperial]="true"></yaga-scale-control>
+        <yaga-zoom-control></yaga-zoom-control>
     </yaga-map>
 </ion-content>

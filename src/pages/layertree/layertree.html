@@ -7,11 +7,57 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-list>
-        <ion-item *ngFor="let layer in layerTreeService.tileLayers">
+<ion-content>
+    <ion-card *ngFor="let layer of tileLayers">
 
-            <button (click)="layerTreeService.removeLayer(layer)"><ion-icon [name]="minus"></ion-icon></button>
-        </ion-item>
-    </ion-list>
+        <ion-card-header>
+            {{ layer.name }}
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-item>
+                <ion-label floating>Name</ion-label>
+                <ion-input type="text" [(ngModel)]="layer.name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>URL</ion-label>
+                <ion-input type="text" [(ngModel)]="layer.url"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Attribution</ion-label>
+                <ion-input type="text" [(ngModel)]="layer.attribution"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Display</ion-label>
+                <ion-toggle [(ngModel)]="layer.enabled"></ion-toggle>
+            </ion-item>
+            <button ion-button color="danger" (click)="removeLayer(layer)">Remove</button>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+
+        <ion-card-header>
+            Create a new Layer
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-item>
+                <ion-label floating>Name</ion-label>
+                <ion-input type="text" [(ngModel)]="newLayer.name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>URL</ion-label>
+                <ion-input type="text" [(ngModel)]="newLayer.url"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Attribution</ion-label>
+                <ion-input type="text" [(ngModel)]="newLayer.attribution"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Display</ion-label>
+                <ion-toggle [(ngModel)]="newLayer.enabled"></ion-toggle>
+            </ion-item>
+            <button ion-button color="secondary" (click)="addLayer()">Add</button>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

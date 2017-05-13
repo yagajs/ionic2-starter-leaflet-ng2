@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { OSM_TILE_LAYER_URL } from '@yaga/leaflet.ng2';
 import { NavController } from 'ionic-angular';
-import { ITileLayerInfo } from '../../app/layertree.service';
+import { ITileLayerInfo } from '../../app/layertree.service'
 
 import { LayertreeService } from '../../app/layertree.service';
 
@@ -10,11 +9,35 @@ import { LayertreeService } from '../../app/layertree.service';
     templateUrl: 'layertree.html'
 })
 export class LayertreePage {
-    public createLayer: ITileLayerInfo = {
-        attribution: '',
-        enabled: false,
-        url: '',
+    public tileLayers: ITileLayerInfo[] = [];
+    public newLayer: ITileLayerInfo = {
+        name: 'OpenTopoMap',
+        url: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+        attribution: '© OpenTopoMap',
+        enabled: true,
     };
-    constructor(public navCtrl: NavController, public layertreeService: LayertreeService) {}
+    constructor(
+        public navCtrl: NavController,
+        public layertreeService: LayertreeService,
+    ) {
+        this.tileLayers = this.layertreeService.tileLayers;
+    }
 
+    public removeLayer(layer: ITileLayerInfo) {
+        this.tileLayers.splice(this.tileLayers.indexOf(layer), 1);
+    }
+    public addLayer() {
+        this.tileLayers.push(this.newLayer);
+        this.newLayer = {
+            name: '',
+            url: '',
+            attribution: '',
+            enabled: true,
+        };
+
+    }
+
+    public ionViewWillLeave() {
+        this.layertreeService.tileLayers = this.tileLayers;
+    }
 }

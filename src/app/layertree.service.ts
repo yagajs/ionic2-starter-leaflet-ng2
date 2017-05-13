@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { OSM_TILE_LAYER_URL } from '@yaga/leafelt-ng2';
+import { OSM_TILE_LAYER_URL } from '@yaga/leaflet-ng2';
 
 export interface ITileLayerInfo {
+    name: string;
     url: string;
     attribution: string;
     enabled?: boolean;
@@ -11,6 +12,7 @@ export interface ITileLayerInfo {
 export class LayertreeService {
     public tileLayers: ITileLayerInfo[] = [
         {
+            name: 'OpenStreetMap',
             attribution: '© <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             enabled: true,
             url: OSM_TILE_LAYER_URL,
@@ -29,11 +31,7 @@ export class LayertreeService {
         return true;
     }
     public enableTileLayer(layer: ITileLayerInfo): boolean {
-        const pos: number = this.tileLayers.indexOf(layer);
-        if (pos === -1) {
-            return false;
-        }
-        this.tileLayers.splice(this.tileLayers.indexOf(layer), 1);
+        layer.enabled = true;
         return true;
     }
 }
