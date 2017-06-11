@@ -9,7 +9,7 @@ This Ionic starter comes with a pre-configured [YAGA leaflet-ng2 Map](https://le
 This starter project requires Ionic CLI 2.0, to install, run
 
 ```bash
-npm install -g ionic
+npm install -g cordova ionic@2.2.3
 ```
 
 Make sure to add `sudo` on Mac and Linux. If you encounter issues installing the Ionic 3 CLI, uninstall the old one using `npm uninstall -g ionic` first.
